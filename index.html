@@ -1,0 +1,1835 @@
+<!doctype html>
+<html lang="zh-CN" class="scroll-smooth">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Mémento Grammatical | 法语语法概要体系</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+            rel="stylesheet"
+        />
+        <style>
+            /* 强制覆盖及自定义滚动条以符合高端学术文档视觉 */
+            body {
+                font-family:
+                    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                    "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            }
+            .fr-term {
+                font-family: "Georgia", serif;
+                color: #4f46e5;
+                font-style: italic;
+            }
+            .fr-ex {
+                font-family: "Georgia", serif;
+                color: #1e40af;
+                background-color: #eff6ff;
+                padding: 0.25rem 0.5rem;
+                border-radius: 0.25rem;
+                display: inline-block;
+                margin-top: 0.25rem;
+            }
+            ::-webkit-scrollbar {
+                width: 6px;
+                height: 6px;
+            }
+            ::-webkit-scrollbar-track {
+                background: #f1f5f9;
+            }
+            ::-webkit-scrollbar-thumb {
+                background: #cbd5e1;
+                border-radius: 3px;
+            }
+            ::-webkit-scrollbar-thumb:hover {
+                background: #94a3b8;
+            }
+
+            /* 侧边栏活动项高亮 */
+            .toc-link.active {
+                background-color: #e0e7ff;
+                color: #4338ca;
+                border-left-color: #4338ca;
+                font-weight: 600;
+            }
+
+            /* 搜索高亮 */
+            mark.search-highlight {
+                background-color: #fde047;
+                color: #1e3a8a;
+                padding: 0 2px;
+                border-radius: 2px;
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body
+        class="bg-slate-50 text-slate-800 antialiased h-screen flex overflow-hidden"
+    >
+        <!-- 侧边栏 (Sidebar - Table of Contents) -->
+        <aside
+            class="w-64 bg-white border-r border-slate-200 flex-shrink-0 flex flex-col h-full z-10 shadow-sm hidden md:flex"
+        >
+            <div class="p-6 border-b border-slate-200">
+                <h1 class="text-xl font-bold text-slate-900 leading-tight">
+                    Mémento<br /><span class="text-indigo-600"
+                        >Grammatical</span
+                    >
+                </h1>
+                <p class="text-xs text-slate-500 mt-2 font-mono">
+                    你好！法语 1
+                </p>
+            </div>
+            <div class="flex-1 overflow-y-auto py-4">
+                <nav class="space-y-1">
+                    <a
+                        href="#syntaxe"
+                        class="toc-link block px-6 py-2 text-sm text-slate-600 border-l-4 border-transparent hover:bg-slate-50 transition-colors"
+                        >I. La Phrase 句法结构</a
+                    >
+                    <a
+                        href="#determinants"
+                        class="toc-link block px-6 py-2 text-sm text-slate-600 border-l-4 border-transparent hover:bg-slate-50 transition-colors"
+                        >II. Les Déterminants 限定词</a
+                    >
+                    <a
+                        href="#noms"
+                        class="toc-link block px-6 py-2 text-sm text-slate-600 border-l-4 border-transparent hover:bg-slate-50 transition-colors"
+                        >III. Les Noms 名词</a
+                    >
+                    <a
+                        href="#pronoms"
+                        class="toc-link block px-6 py-2 text-sm text-slate-600 border-l-4 border-transparent hover:bg-slate-50 transition-colors"
+                        >IV. Les Pronoms 代词拓扑</a
+                    >
+                    <a
+                        href="#adjectifs"
+                        class="toc-link block px-6 py-2 text-sm text-slate-600 border-l-4 border-transparent hover:bg-slate-50 transition-colors"
+                        >V. Les Adjectifs 形容词</a
+                    >
+                    <a
+                        href="#verbes"
+                        class="toc-link block px-6 py-2 text-sm text-slate-600 border-l-4 border-transparent hover:bg-slate-50 transition-colors"
+                        >VI. Le Verbe 动词系统</a
+                    >
+                    <a
+                        href="#invariables"
+                        class="toc-link block px-6 py-2 text-sm text-slate-600 border-l-4 border-transparent hover:bg-slate-50 transition-colors"
+                        >VII. Mots Invariables 不变词</a
+                    >
+                    <a
+                        href="#ponctuation"
+                        class="toc-link block px-6 py-2 text-sm text-slate-600 border-l-4 border-transparent hover:bg-slate-50 transition-colors"
+                        >VIII. Ponctuation 标点与符号</a
+                    >
+                </nav>
+            </div>
+        </aside>
+
+        <!-- 主内容区 (Main Content) -->
+        <main
+            class="flex-1 flex flex-col h-full relative overflow-hidden bg-slate-50/50"
+        >
+            <!-- 顶栏 (Top bar) -->
+            <header
+                class="bg-white/80 backdrop-blur-md border-b border-slate-200 p-4 sticky top-0 z-20 flex justify-between items-center shadow-sm"
+            >
+                <div class="flex items-center md:hidden">
+                    <h1 class="text-lg font-bold text-slate-900">
+                        Mémento Grammatical
+                    </h1>
+                </div>
+                <div class="flex-1 max-w-xl mx-auto flex items-center relative">
+                    <i class="fas fa-search absolute left-3 text-slate-400"></i>
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="检索核心概念 (如: COD, 未完成过去时, ne...pas)..."
+                        class="w-full pl-10 pr-4 py-2 bg-slate-100 border-transparent rounded-lg text-sm focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 transition-all outline-none"
+                    />
+                    <button
+                        id="clearSearch"
+                        class="absolute right-3 text-slate-400 hover:text-slate-600 hidden"
+                    >
+                        <i class="fas fa-times-circle"></i>
+                    </button>
+                </div>
+            </header>
+
+            <!-- 内容滚动区 -->
+            <div
+                id="scrollContainer"
+                class="flex-1 overflow-y-auto p-4 md:p-8 lg:p-12"
+            >
+                <div
+                    class="max-w-4xl mx-auto space-y-12 pb-24"
+                    id="contentArea"
+                >
+                    <!-- I. LA PHRASE 句子 -->
+                    <section id="syntaxe" class="grammar-section scroll-mt-24">
+                        <h2
+                            class="text-2xl font-bold text-slate-800 border-b-2 border-indigo-200 pb-2 mb-6 flex items-center"
+                        >
+                            <i class="fas fa-sitemap text-indigo-500 mr-3"></i>
+                            I. La Phrase (句法结构)
+                        </h2>
+
+                        <div class="space-y-6">
+                            <!-- 肯定句 -->
+                            <div
+                                class="bg-white rounded-xl shadow-sm border border-slate-200 p-6"
+                            >
+                                <h3
+                                    class="text-lg font-semibold text-slate-800 mb-4"
+                                >
+                                    <span class="fr-term"
+                                        >La phrase affirmative</span
+                                    >
+                                    肯定句序列
+                                </h3>
+                                <div class="overflow-x-auto">
+                                    <table
+                                        class="min-w-full divide-y divide-slate-200 text-sm"
+                                    >
+                                        <thead class="bg-slate-50">
+                                            <tr>
+                                                <th
+                                                    class="px-4 py-2 text-left font-medium text-slate-500"
+                                                >
+                                                    主语 (Sujet)
+                                                </th>
+                                                <th
+                                                    class="px-4 py-2 text-left font-medium text-slate-500"
+                                                >
+                                                    谓语动词/宾语 (Verbe +
+                                                    Objet)
+                                                </th>
+                                                <th
+                                                    class="px-4 py-2 text-left font-medium text-slate-500"
+                                                >
+                                                    补充成分/状语 (Circonstant)
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody
+                                            class="divide-y divide-slate-100 font-serif"
+                                        >
+                                            <tr>
+                                                <td
+                                                    class="px-4 py-2 font-semibold"
+                                                >
+                                                    Mes amis
+                                                </td>
+                                                <td
+                                                    class="px-4 py-2 text-indigo-600"
+                                                >
+                                                    sont étudiants
+                                                </td>
+                                                <td
+                                                    class="px-4 py-2 text-slate-500"
+                                                >
+                                                    en Italie.
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td
+                                                    class="px-4 py-2 font-semibold"
+                                                >
+                                                    Les enfants
+                                                </td>
+                                                <td
+                                                    class="px-4 py-2 text-indigo-600"
+                                                >
+                                                    font du sport
+                                                </td>
+                                                <td
+                                                    class="px-4 py-2 text-slate-500"
+                                                >
+                                                    le samedi.
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td
+                                                    class="px-4 py-2 font-semibold"
+                                                >
+                                                    Ils
+                                                </td>
+                                                <td
+                                                    class="px-4 py-2 text-indigo-600"
+                                                >
+                                                    sont venus
+                                                </td>
+                                                <td
+                                                    class="px-4 py-2 text-slate-500"
+                                                >
+                                                    hier.
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <!-- 否定句 -->
+                            <div
+                                class="bg-white rounded-xl shadow-sm border border-slate-200 p-6"
+                            >
+                                <h3
+                                    class="text-lg font-semibold text-slate-800 mb-4"
+                                >
+                                    <span class="fr-term"
+                                        >La phrase négative</span
+                                    >
+                                    否定句逻辑
+                                </h3>
+                                <p class="text-sm text-slate-600 mb-4">
+                                    核心算子：<span class="fr-term"
+                                        >ne ... pas</span
+                                    >
+                                    (不，没有) /
+                                    <span class="fr-term">ne ... plus</span>
+                                    (不再)。一般位于变位动词前后。
+                                </p>
+
+                                <ul class="space-y-3 text-sm">
+                                    <li
+                                        class="p-3 bg-slate-50 rounded-lg border-l-4 border-indigo-400"
+                                    >
+                                        <strong>简单时态：</strong>
+                                        夹住变位动词。<br />
+                                        <span class="fr-ex"
+                                            >Je ne sais pas.</span
+                                        >
+                                    </li>
+                                    <li
+                                        class="p-3 bg-slate-50 rounded-lg border-l-4 border-indigo-400"
+                                    >
+                                        <strong
+                                            >复合时态 / 半助动词结构：</strong
+                                        >
+                                        夹住助动词或半助动词 (aller/venir)。<br />
+                                        <span class="fr-ex"
+                                            >Je n'ai pas dormi.</span
+                                        >
+                                        <span class="fr-ex"
+                                            >Je ne vais pas sortir ce
+                                            soir.</span
+                                        >
+                                    </li>
+                                    <li
+                                        class="p-3 bg-slate-50 rounded-lg border-l-4 border-indigo-400"
+                                    >
+                                        <strong>否定命令式：</strong> ne
+                                        位于句首，pas/plus 位于动词后。<br />
+                                        <span class="fr-ex"
+                                            >Ne regarde pas !</span
+                                        >
+                                    </li>
+                                    <li
+                                        class="p-3 bg-rose-50 rounded-lg border-l-4 border-rose-400 text-rose-900"
+                                    >
+                                        <strong
+                                            >⚠️ 拓扑禁忌 (代词前置)：</strong
+                                        >
+                                        当存在宾语人称代词或副代词(y,
+                                        en)时，<span class="font-bold">ne</span>
+                                        必须提到所有代词前面。<br />
+                                        <span
+                                            class="fr-ex bg-white text-rose-700 border border-rose-200"
+                                            >Je ne le vois plus.</span
+                                        >
+                                        <span
+                                            class="fr-ex bg-white text-rose-700 border border-rose-200"
+                                            >Ne le regarde pas !</span
+                                        >
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- 疑问句 -->
+                            <div
+                                class="bg-white rounded-xl shadow-sm border border-slate-200 p-6"
+                            >
+                                <h3
+                                    class="text-lg font-semibold text-slate-800 mb-4"
+                                >
+                                    <span class="fr-term"
+                                        >La phrase interrogative</span
+                                    >
+                                    疑问句语用学分层
+                                </h3>
+                                <div class="overflow-x-auto">
+                                    <table
+                                        class="min-w-full divide-y divide-slate-200 text-sm"
+                                    >
+                                        <thead class="bg-slate-50">
+                                            <tr>
+                                                <th
+                                                    class="px-4 py-2 text-left font-medium text-slate-500 w-1/3"
+                                                >
+                                                    非正式口语 (Langue
+                                                    familière)
+                                                </th>
+                                                <th
+                                                    class="px-4 py-2 text-left font-medium text-slate-500 w-1/3"
+                                                >
+                                                    标准语 (Langue standard)
+                                                </th>
+                                                <th
+                                                    class="px-4 py-2 text-left font-medium text-slate-500 w-1/3"
+                                                >
+                                                    正式书面语 (Langue formelle)
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody
+                                            class="divide-y divide-slate-100"
+                                        >
+                                            <tr class="bg-slate-50/50">
+                                                <td
+                                                    colspan="3"
+                                                    class="px-4 py-2 text-xs font-bold text-slate-400 uppercase tracking-wider"
+                                                >
+                                                    Questions fermées
+                                                    (一般疑问句)
+                                                </td>
+                                            </tr>
+                                            <tr class="font-serif">
+                                                <td class="px-4 py-2">
+                                                    Vous êtes français ?
+                                                </td>
+                                                <td
+                                                    class="px-4 py-2 text-indigo-700"
+                                                >
+                                                    Est-ce que vous êtes
+                                                    français ?
+                                                </td>
+                                                <td
+                                                    class="px-4 py-2 text-emerald-700"
+                                                >
+                                                    Êtes-vous français ?
+                                                    (主谓倒装)
+                                                </td>
+                                            </tr>
+                                            <tr class="bg-slate-50/50">
+                                                <td
+                                                    colspan="3"
+                                                    class="px-4 py-2 text-xs font-bold text-slate-400 uppercase tracking-wider"
+                                                >
+                                                    Questions ouvertes
+                                                    (特殊疑问句)
+                                                </td>
+                                            </tr>
+                                            <tr class="font-serif">
+                                                <td class="px-4 py-2">
+                                                    Vous cherchez qui ?
+                                                </td>
+                                                <td
+                                                    class="px-4 py-2 text-indigo-700"
+                                                >
+                                                    Qui est-ce que vous cherchez
+                                                    ?
+                                                </td>
+                                                <td
+                                                    class="px-4 py-2 text-emerald-700"
+                                                >
+                                                    Qui cherchez-vous ?
+                                                </td>
+                                            </tr>
+                                            <tr class="font-serif">
+                                                <td class="px-4 py-2">
+                                                    Vous voulez quoi ?
+                                                </td>
+                                                <td
+                                                    class="px-4 py-2 text-indigo-700"
+                                                >
+                                                    Qu'est-ce que vous voulez ?
+                                                </td>
+                                                <td
+                                                    class="px-4 py-2 text-emerald-700"
+                                                >
+                                                    Que voulez-vous ?
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- II. LES DÉTERMINANTS 限定词 -->
+                    <section
+                        id="determinants"
+                        class="grammar-section scroll-mt-24"
+                    >
+                        <h2
+                            class="text-2xl font-bold text-slate-800 border-b-2 border-indigo-200 pb-2 mb-6 flex items-center"
+                        >
+                            <i class="fas fa-tag text-indigo-500 mr-3"></i> II.
+                            Les Déterminants (限定词)
+                        </h2>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- 冠词 -->
+                            <div
+                                class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 col-span-1 md:col-span-2"
+                            >
+                                <h3
+                                    class="text-lg font-semibold text-slate-800 mb-4"
+                                >
+                                    1.
+                                    <span class="fr-term">Les articles</span>
+                                    冠词演化矩阵
+                                </h3>
+                                <div class="overflow-x-auto">
+                                    <table
+                                        class="min-w-full divide-y divide-slate-200 text-sm"
+                                    >
+                                        <thead class="bg-slate-50">
+                                            <tr>
+                                                <th
+                                                    class="px-4 py-2 text-left font-medium text-slate-500"
+                                                >
+                                                    类型
+                                                </th>
+                                                <th
+                                                    class="px-4 py-2 text-left font-medium text-slate-500"
+                                                >
+                                                    单数阳性 (M.S)
+                                                </th>
+                                                <th
+                                                    class="px-4 py-2 text-left font-medium text-slate-500"
+                                                >
+                                                    单数阴性 (F.S)
+                                                </th>
+                                                <th
+                                                    class="px-4 py-2 text-left font-medium text-slate-500"
+                                                >
+                                                    复数 (Pluriel)
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody
+                                            class="divide-y divide-slate-100 font-serif"
+                                        >
+                                            <tr>
+                                                <td
+                                                    class="px-4 py-2 text-xs font-bold text-slate-500 font-sans"
+                                                >
+                                                    定冠词 (Définis)
+                                                </td>
+                                                <td class="px-4 py-2">
+                                                    le / l'
+                                                </td>
+                                                <td class="px-4 py-2">
+                                                    la / l'
+                                                </td>
+                                                <td
+                                                    class="px-4 py-2 text-indigo-600"
+                                                >
+                                                    les
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td
+                                                    class="px-4 py-2 text-xs font-bold text-slate-500 font-sans"
+                                                >
+                                                    不定冠词 (Indéfinis)
+                                                </td>
+                                                <td class="px-4 py-2">un</td>
+                                                <td class="px-4 py-2">une</td>
+                                                <td
+                                                    class="px-4 py-2 text-indigo-600"
+                                                >
+                                                    des
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td
+                                                    class="px-4 py-2 text-xs font-bold text-slate-500 font-sans"
+                                                >
+                                                    部分冠词 (Partitifs)
+                                                </td>
+                                                <td class="px-4 py-2">
+                                                    du / de l'
+                                                </td>
+                                                <td class="px-4 py-2">
+                                                    de la / de l'
+                                                </td>
+                                                <td
+                                                    class="px-4 py-2 text-indigo-600"
+                                                >
+                                                    des
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td
+                                                    class="px-4 py-2 text-xs font-bold text-slate-500 font-sans"
+                                                >
+                                                    缩合冠词 (Contractés)
+                                                </td>
+                                                <td class="px-4 py-2">
+                                                    du (de+le) / au (à+le)
+                                                </td>
+                                                <td
+                                                    class="px-4 py-2 text-slate-400"
+                                                >
+                                                    -
+                                                </td>
+                                                <td
+                                                    class="px-4 py-2 text-indigo-600"
+                                                >
+                                                    des (de+les) / aux (à+les)
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div
+                                    class="mt-4 text-sm text-slate-600 bg-amber-50 p-3 rounded border-l-4 border-amber-400"
+                                >
+                                    <strong>专有名词特殊规则：</strong
+                                    >人名、城市名通常无冠词 (<span class="fr-ex"
+                                        >Paris</span
+                                    >)。国家、大区前约定俗成加定冠词 (<span
+                                        class="fr-ex"
+                                        >la France</span
+                                    >, <span class="fr-ex">la Bretagne</span>)。
+                                </div>
+                            </div>
+
+                            <!-- 主有形容词 -->
+                            <div
+                                class="bg-white rounded-xl shadow-sm border border-slate-200 p-6"
+                            >
+                                <h3
+                                    class="text-lg font-semibold text-slate-800 mb-4"
+                                >
+                                    2.
+                                    <span class="fr-term"
+                                        >Adjectifs possessifs</span
+                                    >
+                                    主有形容词
+                                </h3>
+                                <table
+                                    class="w-full text-sm text-left font-serif"
+                                >
+                                    <thead
+                                        class="font-sans text-xs text-slate-500 bg-slate-50"
+                                    >
+                                        <tr>
+                                            <th>人称</th>
+                                            <th>阳单</th>
+                                            <th>阴单</th>
+                                            <th>复数</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td
+                                                class="font-sans text-slate-500"
+                                            >
+                                                Je
+                                            </td>
+                                            <td>mon</td>
+                                            <td>ma</td>
+                                            <td>mes</td>
+                                        </tr>
+                                        <tr>
+                                            <td
+                                                class="font-sans text-slate-500"
+                                            >
+                                                Tu
+                                            </td>
+                                            <td>ton</td>
+                                            <td>ta</td>
+                                            <td>tes</td>
+                                        </tr>
+                                        <tr>
+                                            <td
+                                                class="font-sans text-slate-500"
+                                            >
+                                                Il/Elle
+                                            </td>
+                                            <td>son</td>
+                                            <td>sa</td>
+                                            <td>ses</td>
+                                        </tr>
+                                        <tr>
+                                            <td
+                                                class="font-sans text-slate-500"
+                                            >
+                                                Nous
+                                            </td>
+                                            <td colspan="2" class="text-center">
+                                                notre
+                                            </td>
+                                            <td>nos</td>
+                                        </tr>
+                                        <tr>
+                                            <td
+                                                class="font-sans text-slate-500"
+                                            >
+                                                Vous
+                                            </td>
+                                            <td colspan="2" class="text-center">
+                                                votre
+                                            </td>
+                                            <td>vos</td>
+                                        </tr>
+                                        <tr>
+                                            <td
+                                                class="font-sans text-slate-500"
+                                            >
+                                                Ils/Elles
+                                            </td>
+                                            <td colspan="2" class="text-center">
+                                                leur
+                                            </td>
+                                            <td>leurs</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <p class="text-xs mt-3 text-rose-600 font-bold">
+                                    ⚠️
+                                    元音/哑音h开头的阴性单数名词前强制变音：ma/ta/sa
+                                    变为 mon/ton/son (如: mon amie).
+                                </p>
+                            </div>
+
+                            <!-- 指示、疑问与泛指 -->
+                            <div class="space-y-6">
+                                <div
+                                    class="bg-white rounded-xl shadow-sm border border-slate-200 p-6"
+                                >
+                                    <h3
+                                        class="text-lg font-semibold text-slate-800 mb-3"
+                                    >
+                                        3.
+                                        <span class="fr-term"
+                                            >Adjectifs démonstratifs</span
+                                        >
+                                        指示
+                                    </h3>
+                                    <div class="text-sm">
+                                        阳单:
+                                        <span class="fr-term font-bold"
+                                            >ce / cet</span
+                                        >
+                                        (元音前) | 阴单:
+                                        <span class="fr-term font-bold"
+                                            >cette</span
+                                        >
+                                        | 复数:
+                                        <span class="fr-term font-bold"
+                                            >ces</span
+                                        >
+                                    </div>
+                                </div>
+
+                                <div
+                                    class="bg-white rounded-xl shadow-sm border border-slate-200 p-6"
+                                >
+                                    <h3
+                                        class="text-lg font-semibold text-slate-800 mb-3"
+                                    >
+                                        4.
+                                        <span class="fr-term"
+                                            >Adjectif interrogatif</span
+                                        >
+                                        疑问
+                                    </h3>
+                                    <div class="text-sm">
+                                        阳单:
+                                        <span class="fr-term font-bold"
+                                            >quel</span
+                                        >
+                                        | 阴单:
+                                        <span class="fr-term font-bold"
+                                            >quelle</span
+                                        ><br />阳复:
+                                        <span class="fr-term font-bold"
+                                            >quels</span
+                                        >
+                                        | 阴复:
+                                        <span class="fr-term font-bold"
+                                            >quelles</span
+                                        >
+                                    </div>
+                                    <div class="mt-2 text-xs text-slate-500">
+                                        可作表语:
+                                        <span class="fr-ex"
+                                            >Quelle est votre profession ?</span
+                                        >
+                                    </div>
+                                </div>
+
+                                <div
+                                    class="bg-white rounded-xl shadow-sm border border-slate-200 p-6"
+                                >
+                                    <h3
+                                        class="text-lg font-semibold text-slate-800 mb-3"
+                                    >
+                                        5.
+                                        <span class="fr-term"
+                                            >Adjectif indéfini</span
+                                        >
+                                        泛指
+                                    </h3>
+                                    <div class="text-sm">
+                                        阳单:
+                                        <span class="fr-term font-bold"
+                                            >tout</span
+                                        >
+                                        | 阴单:
+                                        <span class="fr-term font-bold"
+                                            >toute</span
+                                        >
+                                        (意为：整个的)<br />阳复:
+                                        <span class="fr-term font-bold"
+                                            >tous [tu]</span
+                                        >
+                                        | 阴复:
+                                        <span class="fr-term font-bold"
+                                            >toutes</span
+                                        >
+                                        (意为：所有的)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- III. LES NOMS 名词 -->
+                    <section id="noms" class="grammar-section scroll-mt-24">
+                        <h2
+                            class="text-2xl font-bold text-slate-800 border-b-2 border-indigo-200 pb-2 mb-6 flex items-center"
+                        >
+                            <i class="fas fa-cube text-indigo-500 mr-3"></i>
+                            III. Les Noms (名词词法学)
+                        </h2>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- 阴阳性 -->
+                            <div
+                                class="bg-white rounded-xl shadow-sm border border-slate-200 p-6"
+                            >
+                                <h3
+                                    class="text-lg font-semibold text-slate-800 mb-4"
+                                >
+                                    <span class="fr-term">Le genre</span>
+                                    性属转换学
+                                </h3>
+                                <ul class="text-sm space-y-2">
+                                    <li>
+                                        <span
+                                            class="font-mono text-slate-500 w-24 inline-block"
+                                            >普通规则:</span
+                                        >
+                                        +e (<span class="fr-ex">voisin</span>
+                                        &rarr;
+                                        <span class="fr-ex">voisine</span>)
+                                    </li>
+                                    <li>
+                                        <span
+                                            class="font-mono text-slate-500 w-24 inline-block"
+                                            >-eur 结尾:</span
+                                        >
+                                        -euse (<span class="fr-ex"
+                                            >chanteuse</span
+                                        >)
+                                    </li>
+                                    <li>
+                                        <span
+                                            class="font-mono text-slate-500 w-24 inline-block"
+                                            >-teur 结尾:</span
+                                        >
+                                        -trice (<span class="fr-ex"
+                                            >conductrice</span
+                                        >)
+                                    </li>
+                                    <li>
+                                        <span
+                                            class="font-mono text-slate-500 w-24 inline-block"
+                                            >-er 结尾:</span
+                                        >
+                                        -ère (<span class="fr-ex">épicière</span
+                                        >)
+                                    </li>
+                                    <li>
+                                        <span
+                                            class="font-mono text-slate-500 w-24 inline-block"
+                                            >-ien 结尾:</span
+                                        >
+                                        -ienne (<span class="fr-ex"
+                                            >informaticienne</span
+                                        >)
+                                    </li>
+                                    <li>
+                                        <span
+                                            class="font-mono text-slate-500 w-24 inline-block"
+                                            >恒定形式:</span
+                                        >
+                                        = (<span class="fr-ex">photographe</span
+                                        >)
+                                    </li>
+                                </ul>
+                                <div
+                                    class="mt-4 text-xs text-slate-500 bg-slate-50 p-2 rounded"
+                                >
+                                    历史遗留特定职业词无阴性形式，可通过前置
+                                    <span class="fr-term">femme</span>
+                                    解决：<span class="fr-ex"
+                                        >la femme médecin</span
+                                    >。
+                                </div>
+                            </div>
+
+                            <!-- 单复数 -->
+                            <div
+                                class="bg-white rounded-xl shadow-sm border border-slate-200 p-6"
+                            >
+                                <h3
+                                    class="text-lg font-semibold text-slate-800 mb-4"
+                                >
+                                    <span class="fr-term">Le nombre</span>
+                                    数的演化律
+                                </h3>
+                                <ul class="text-sm space-y-2">
+                                    <li>
+                                        <span
+                                            class="font-mono text-slate-500 w-24 inline-block"
+                                            >普通规则:</span
+                                        >
+                                        +s (<span class="fr-ex">livres</span>)
+                                    </li>
+                                    <li>
+                                        <span
+                                            class="font-mono text-slate-500 w-24 inline-block"
+                                            >s, x, z 结尾:</span
+                                        >
+                                        保持不变 (<span class="fr-ex"
+                                            >le prix</span
+                                        >
+                                        &rarr;
+                                        <span class="fr-ex">les prix</span>)
+                                    </li>
+                                    <li>
+                                        <span
+                                            class="font-mono text-slate-500 w-24 inline-block"
+                                            >au, eau, eu:</span
+                                        >
+                                        +x (<span class="fr-ex">noyaux</span>,
+                                        <span class="fr-ex">cheveux</span>)
+                                    </li>
+                                    <li>
+                                        <span
+                                            class="font-mono text-slate-500 w-24 inline-block"
+                                            >-al 结尾:</span
+                                        >
+                                        -aux (<span class="fr-ex">cheval</span>
+                                        &rarr;
+                                        <span class="fr-ex">chevaux</span>)
+                                    </li>
+                                </ul>
+                                <div
+                                    class="mt-4 text-xs text-slate-500 bg-slate-50 p-2 rounded"
+                                >
+                                    *
+                                    听力核心策略：单复数名词本身大多发音同构，必须通过<strong
+                                        class="text-indigo-600"
+                                        >限定词的发音差异及联诵/连音</strong
+                                    >来进行结构判断。
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- IV. LES PRONOMS 代词 -->
+                    <section id="pronoms" class="grammar-section scroll-mt-24">
+                        <h2
+                            class="text-2xl font-bold text-slate-800 border-b-2 border-indigo-200 pb-2 mb-6 flex items-center"
+                        >
+                            <i
+                                class="fas fa-project-diagram text-indigo-500 mr-3"
+                            ></i>
+                            IV. Les Pronoms (代词拓扑学)
+                        </h2>
+
+                        <!-- 代词格变矩阵 -->
+                        <div
+                            class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 mb-6"
+                        >
+                            <h3
+                                class="text-lg font-semibold text-slate-800 mb-4"
+                            >
+                                1.
+                                <span class="fr-term"
+                                    >Les pronoms personnels</span
+                                >
+                                人称代词矩阵
+                            </h3>
+                            <div class="overflow-x-auto">
+                                <table
+                                    class="min-w-full divide-y divide-slate-200 text-sm"
+                                >
+                                    <thead class="bg-indigo-50">
+                                        <tr>
+                                            <th
+                                                class="px-4 py-2 text-left font-medium text-indigo-800 text-xs uppercase"
+                                            >
+                                                主语 (Sujet)
+                                            </th>
+                                            <th
+                                                class="px-4 py-2 text-left font-medium text-indigo-800 text-xs uppercase"
+                                            >
+                                                重读 (Tonique)
+                                            </th>
+                                            <th
+                                                class="px-4 py-2 text-left font-medium text-indigo-800 text-xs uppercase"
+                                            >
+                                                直接宾语 (COD)
+                                            </th>
+                                            <th
+                                                class="px-4 py-2 text-left font-medium text-indigo-800 text-xs uppercase"
+                                            >
+                                                间接宾语 (COI)
+                                            </th>
+                                            <th
+                                                class="px-4 py-2 text-left font-medium text-indigo-800 text-xs uppercase"
+                                            >
+                                                自反 (Réfléchi)
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody
+                                        class="divide-y divide-slate-100 font-serif"
+                                    >
+                                        <tr>
+                                            <td class="px-4 py-2">je</td>
+                                            <td class="px-4 py-2">moi</td>
+                                            <td class="px-4 py-2">me (m')</td>
+                                            <td class="px-4 py-2">me</td>
+                                            <td class="px-4 py-2">me</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-4 py-2">tu</td>
+                                            <td class="px-4 py-2">toi</td>
+                                            <td class="px-4 py-2">te (t')</td>
+                                            <td class="px-4 py-2">te</td>
+                                            <td class="px-4 py-2">te</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-4 py-2">il / elle</td>
+                                            <td class="px-4 py-2">
+                                                lui / elle
+                                            </td>
+                                            <td class="px-4 py-2">
+                                                le / la (l')
+                                            </td>
+                                            <td
+                                                class="px-4 py-2 font-bold text-rose-600"
+                                            >
+                                                lui
+                                            </td>
+                                            <td class="px-4 py-2">se</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-4 py-2">nous</td>
+                                            <td class="px-4 py-2">nous</td>
+                                            <td class="px-4 py-2">nous</td>
+                                            <td class="px-4 py-2">nous</td>
+                                            <td class="px-4 py-2">nous</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-4 py-2">vous</td>
+                                            <td class="px-4 py-2">vous</td>
+                                            <td class="px-4 py-2">vous</td>
+                                            <td class="px-4 py-2">vous</td>
+                                            <td class="px-4 py-2">vous</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-4 py-2">
+                                                ils / elles
+                                            </td>
+                                            <td class="px-4 py-2">
+                                                eux / elles
+                                            </td>
+                                            <td class="px-4 py-2">les</td>
+                                            <td
+                                                class="px-4 py-2 font-bold text-rose-600"
+                                            >
+                                                leur
+                                            </td>
+                                            <td class="px-4 py-2">se</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <!-- 副代词 -->
+                            <div
+                                class="bg-white rounded-xl shadow-sm border border-slate-200 p-6"
+                            >
+                                <h3
+                                    class="text-lg font-semibold text-slate-800 mb-4"
+                                >
+                                    2.
+                                    <span class="fr-term"
+                                        >Les pronoms adverbiaux</span
+                                    >
+                                    副代词
+                                </h3>
+                                <div class="space-y-4">
+                                    <div>
+                                        <h4
+                                            class="font-bold text-indigo-700 font-serif text-lg"
+                                        >
+                                            EN
+                                            <span
+                                                class="text-sm font-sans text-slate-500 font-normal"
+                                                >(= de + 物)</span
+                                            >
+                                        </h4>
+                                        <p class="text-sm text-slate-600 mt-1">
+                                            代替由不定/部分冠词、数量词、或
+                                            <code>de</code>
+                                            引导的<strong>事物</strong>。
+                                        </p>
+                                        <div class="mt-2 text-sm">
+                                            <span class="fr-ex"
+                                                >Tu as des frères ? - Oui, j'en
+                                                ai trois.</span
+                                            >
+                                        </div>
+                                        <p class="text-xs text-rose-600 mt-1">
+                                            ⚠️ 若
+                                            <code>de</code>
+                                            后接人，须用重读人称代词 (如：<code
+                                                >se souvenir de lui</code
+                                            >)。
+                                        </p>
+                                    </div>
+                                    <hr class="border-slate-100" />
+                                    <div>
+                                        <h4
+                                            class="font-bold text-indigo-700 font-serif text-lg"
+                                        >
+                                            Y
+                                            <span
+                                                class="text-sm font-sans text-slate-500 font-normal"
+                                                >(= à/dans/en/sur + 地点)</span
+                                            >
+                                        </h4>
+                                        <p class="text-sm text-slate-600 mt-1">
+                                            代替介词引导的地点状语。
+                                        </p>
+                                        <div class="mt-2 text-sm">
+                                            <span class="fr-ex"
+                                                >Tu vas dans le jardin ? - Oui,
+                                                j'y vais.</span
+                                            >
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 拓扑位置 -->
+                            <div
+                                class="bg-white rounded-xl shadow-sm border border-slate-200 p-6"
+                            >
+                                <h3
+                                    class="text-lg font-semibold text-slate-800 mb-4"
+                                >
+                                    3.
+                                    <span class="fr-term"
+                                        >La place des pronoms</span
+                                    >
+                                    代词绝对拓扑学
+                                </h3>
+                                <p
+                                    class="text-sm font-bold text-slate-700 mb-2"
+                                >
+                                    绝对原则：位于相关动词之前。
+                                </p>
+                                <ul class="text-sm space-y-3 text-slate-600">
+                                    <li>
+                                        <i
+                                            class="fas fa-check-circle text-emerald-500 mr-1"
+                                        ></i>
+                                        <strong>直陈式/复合时态：</strong>
+                                        助动词前。 <br /><span class="fr-ex"
+                                            >Tu leur as parlé.</span
+                                        >
+                                    </li>
+                                    <li>
+                                        <i
+                                            class="fas fa-check-circle text-emerald-500 mr-1"
+                                        ></i>
+                                        <strong
+                                            >双动词结构 (aller/venir de +
+                                            inf.)：</strong
+                                        >
+                                        不定式前。 <br /><span class="fr-ex"
+                                            >Tu vas les voir.</span
+                                        >
+                                    </li>
+                                    <li>
+                                        <i
+                                            class="fas fa-exclamation-triangle text-amber-500 mr-1"
+                                        ></i>
+                                        <strong>肯定命令式例外：</strong>
+                                        动词后，加连字符，me/te 变 moi/toi。<br /><span
+                                            class="fr-ex"
+                                            >Parle-moi.</span
+                                        >
+                                        <span class="fr-ex">Allez-y.</span>
+                                    </li>
+                                    <li>
+                                        <i
+                                            class="fas fa-times-circle text-rose-500 mr-1"
+                                        ></i>
+                                        <strong>否定命令式恢复前置：</strong>
+                                        <br /><span class="fr-ex"
+                                            >Ne l'écoute pas.</span
+                                        >
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- 泛指与指示代词 -->
+                        <div
+                            class="bg-white rounded-xl shadow-sm border border-slate-200 p-6"
+                        >
+                            <h3
+                                class="text-lg font-semibold text-slate-800 mb-4"
+                            >
+                                4.
+                                <span class="fr-term"
+                                    >Pronoms indéfinis & démonstratif</span
+                                >
+                                泛指与指示
+                            </h3>
+                            <div class="grid md:grid-cols-3 gap-4">
+                                <div class="p-4 bg-slate-50 rounded-lg">
+                                    <h4 class="font-bold text-slate-700 mb-2">
+                                        On
+                                    </h4>
+                                    <p class="text-sm text-slate-600">
+                                        可指明确的人 (=nous) 或泛指 (les
+                                        gens)。谓语动词强制<strong>第三人称单数</strong>。
+                                    </p>
+                                </div>
+                                <div class="p-4 bg-slate-50 rounded-lg">
+                                    <h4 class="font-bold text-slate-700 mb-2">
+                                        Tout
+                                    </h4>
+                                    <p class="text-sm text-slate-600">
+                                        阳单: tout / 阳复: tous [tus] / 阴复:
+                                        toutes。独立使用充当主语、宾语或同位语。
+                                    </p>
+                                </div>
+                                <div class="p-4 bg-slate-50 rounded-lg">
+                                    <h4 class="font-bold text-slate-700 mb-2">
+                                        Ça
+                                    </h4>
+                                    <p class="text-sm text-slate-600">
+                                        口语化指示代词
+                                        (=cela)。代替名词或整个不定式概念。
+                                        <span class="fr-ex block mt-1"
+                                            >J'adore ça !</span
+                                        >
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- V. LES ADJECTIFS QUALIFICATIFS 形容词 -->
+                    <section
+                        id="adjectifs"
+                        class="grammar-section scroll-mt-24"
+                    >
+                        <h2
+                            class="text-2xl font-bold text-slate-800 border-b-2 border-indigo-200 pb-2 mb-6 flex items-center"
+                        >
+                            <i class="fas fa-palette text-indigo-500 mr-3"></i>
+                            V. Les Adjectifs (品质形容词)
+                        </h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div
+                                class="bg-white rounded-xl shadow-sm border border-slate-200 p-6"
+                            >
+                                <h3
+                                    class="text-lg font-semibold text-slate-800 mb-4"
+                                >
+                                    <span class="fr-term">L'accord</span>
+                                    性数配合律
+                                </h3>
+                                <ul class="text-sm space-y-2 mb-4">
+                                    <li>
+                                        <strong>阴性突变：</strong> -ien &rarr;
+                                        -ienne, -f &rarr; -ve, -er &rarr; -ère,
+                                        -eux &rarr; -euse
+                                    </li>
+                                    <li>
+                                        <strong>复数突变：</strong> -eau &rarr;
+                                        -eaux, -al &rarr; -aux
+                                    </li>
+                                </ul>
+                                <div
+                                    class="bg-rose-50 p-3 rounded-lg border-l-4 border-rose-300"
+                                >
+                                    <strong class="text-rose-800 text-sm"
+                                        >不规则突变 (特殊音变锚定)：</strong
+                                    >
+                                    <div
+                                        class="font-serif text-sm text-rose-700 mt-1"
+                                    >
+                                        vieux/vieil &rarr; vieille<br />
+                                        beau/bel &rarr; belle<br />
+                                        nouveau/nouvel &rarr; nouvelle
+                                    </div>
+                                    <p class="text-xs text-rose-600 mt-1">
+                                        (*第2形式仅用于元音/哑音h前)
+                                    </p>
+                                </div>
+                            </div>
+                            <div
+                                class="bg-white rounded-xl shadow-sm border border-slate-200 p-6"
+                            >
+                                <h3
+                                    class="text-lg font-semibold text-slate-800 mb-4"
+                                >
+                                    <span class="fr-term">La place</span>
+                                    修饰位置
+                                </h3>
+                                <p class="text-sm text-slate-600 mb-3">
+                                    <strong>基准法则：</strong> 后置 (<span
+                                        class="fr-ex"
+                                        >un pantalon rouge</span
+                                    >)。
+                                </p>
+                                <p class="text-sm text-slate-600 mb-3">
+                                    <strong
+                                        >前置例外
+                                        (高频单音节/双音节词)：</strong
+                                    >
+                                    beau, bon, grand, gros, joli, nouveau,
+                                    petit。
+                                </p>
+                                <div
+                                    class="bg-amber-50 p-3 rounded-lg border-l-4 border-amber-300"
+                                >
+                                    <strong
+                                        class="text-amber-800 text-sm text-bold"
+                                        >句法连锁反应 (Des变De)：</strong
+                                    ><br />
+                                    <span class="text-sm text-slate-700"
+                                        >当形容词前置于复数名词时，不定冠词
+                                        <code>des</code> 强制降级为
+                                        <code>de</code>。</span
+                                    >
+                                    <div class="mt-1">
+                                        <span class="fr-ex"
+                                            >de bonnes nouvelles</span
+                                        >
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- VI. LE VERBE 动词 -->
+                    <section id="verbes" class="grammar-section scroll-mt-24">
+                        <h2
+                            class="text-2xl font-bold text-slate-800 border-b-2 border-indigo-200 pb-2 mb-6 flex items-center"
+                        >
+                            <i class="fas fa-bolt text-indigo-500 mr-3"></i> VI.
+                            Le Verbe (时态与语式引擎)
+                        </h2>
+                        <div
+                            class="bg-white rounded-xl shadow-sm border border-slate-200 p-6"
+                        >
+                            <div class="space-y-6 text-sm">
+                                <!-- 时态解析图谱 -->
+                                <div class="grid md:grid-cols-2 gap-4">
+                                    <div
+                                        class="border border-slate-100 rounded-lg p-4 bg-slate-50"
+                                    >
+                                        <h4
+                                            class="font-bold text-indigo-700 mb-2"
+                                        >
+                                            <i class="far fa-clock"></i> Le
+                                            présent 现在时
+                                        </h4>
+                                        <p class="text-slate-600">
+                                            功能：普遍真理、正在进行的动作、习惯性动作、即将发生的事、命令替代。
+                                        </p>
+                                        <span class="fr-ex mt-2 text-xs"
+                                            >Je déjeune à une heure tous les
+                                            jours.</span
+                                        >
+                                    </div>
+                                    <div
+                                        class="border border-slate-100 rounded-lg p-4 bg-slate-50"
+                                    >
+                                        <h4
+                                            class="font-bold text-indigo-700 mb-2"
+                                        >
+                                            <i class="fas fa-history"></i> Le
+                                            passé composé 复合过去时
+                                        </h4>
+                                        <p class="text-slate-600">
+                                            构造：avoir/être + 过去分词。<br />功能：特定时间内一次性发生且<strong
+                                                class="text-slate-800"
+                                                >已完成</strong
+                                            >的动作(叙事主轴)。
+                                        </p>
+                                        <span class="fr-ex mt-2 text-xs"
+                                            >Je suis sorti hier.</span
+                                        >
+                                    </div>
+                                    <div
+                                        class="border border-slate-100 rounded-lg p-4 bg-slate-50"
+                                    >
+                                        <h4
+                                            class="font-bold text-indigo-700 mb-2"
+                                        >
+                                            <i class="fas fa-water"></i>
+                                            L'imparfait 未完成过去时
+                                        </h4>
+                                        <p class="text-slate-600">
+                                            功能：背景环境描写、过去的精神状态、过去的习惯性动作
+                                            (背景幕布)。
+                                        </p>
+                                        <span class="fr-ex mt-2 text-xs"
+                                            >Quand il est arrivé, je
+                                            lisais.</span
+                                        >
+                                    </div>
+                                    <div
+                                        class="border border-slate-100 rounded-lg p-4 bg-slate-50"
+                                    >
+                                        <h4
+                                            class="font-bold text-indigo-700 mb-2"
+                                        >
+                                            <i class="fas fa-rocket"></i> Le
+                                            futur simple 简单将来时
+                                        </h4>
+                                        <p class="text-slate-600">
+                                            功能：未来的可能性预测、将出现的状态。
+                                        </p>
+                                        <span class="fr-ex mt-2 text-xs"
+                                            >Il fera beau.</span
+                                        >
+                                    </div>
+                                </div>
+
+                                <!-- 半助动词结构 -->
+                                <div
+                                    class="flex items-center space-x-4 border-l-4 border-indigo-400 pl-4 py-2"
+                                >
+                                    <div class="flex-1">
+                                        <strong class="text-slate-800"
+                                            >最近过去时：</strong
+                                        >
+                                        <span
+                                            class="font-mono bg-slate-100 px-1 rounded"
+                                            >venir de + inf.</span
+                                        >
+                                        <br />
+                                        <span class="text-xs text-slate-500"
+                                            >刚刚发生 (<span class="fr-ex"
+                                                >Je viens de rentrer</span
+                                            >)</span
+                                        >
+                                    </div>
+                                    <div class="flex-1">
+                                        <strong class="text-slate-800"
+                                            >最近将来时：</strong
+                                        >
+                                        <span
+                                            class="font-mono bg-slate-100 px-1 rounded"
+                                            >aller + inf.</span
+                                        >
+                                        <br />
+                                        <span class="text-xs text-slate-500"
+                                            >即将发生/意向 (<span class="fr-ex"
+                                                >Il va avoir 22 ans</span
+                                            >)</span
+                                        >
+                                    </div>
+                                </div>
+
+                                <hr class="border-slate-100" />
+
+                                <!-- 命令式 -->
+                                <div>
+                                    <h4 class="font-bold text-slate-800 mb-2">
+                                        L'impératif 命令式语式
+                                    </h4>
+                                    <p class="text-slate-600">
+                                        功能：发出指令、提出请求、建议或邀请。<span
+                                            class="fr-ex"
+                                            >Offrez-lui des fleurs !</span
+                                        >
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- VII. MOTS INVARIABLES 不变词 -->
+                    <section
+                        id="invariables"
+                        class="grammar-section scroll-mt-24"
+                    >
+                        <h2
+                            class="text-2xl font-bold text-slate-800 border-b-2 border-indigo-200 pb-2 mb-6 flex items-center"
+                        >
+                            <i class="fas fa-link text-indigo-500 mr-3"></i>
+                            VII. Mots Invariables (词形不变词)
+                        </h2>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <!-- 副词 -->
+                            <div
+                                class="bg-white rounded-xl shadow-sm border border-slate-200 p-6"
+                            >
+                                <h3
+                                    class="text-lg font-semibold text-slate-800 mb-4"
+                                >
+                                    <span class="fr-term">Adverbes</span> 副词
+                                </h3>
+                                <ul class="text-sm space-y-3">
+                                    <li>
+                                        <strong>频率/程度：</strong> parfois,
+                                        souvent, très, assez...
+                                    </li>
+                                    <li
+                                        class="bg-slate-50 p-2 rounded border border-slate-100"
+                                    >
+                                        <strong>数量副词句法约束：</strong
+                                        ><br />
+                                        beaucoup / un peu / peu / trop / assez +
+                                        <strong class="text-indigo-600"
+                                            >de</strong
+                                        >
+                                        +
+                                        <strong class="text-rose-600"
+                                            >无冠词名词</strong
+                                        >。<br />
+                                        <span class="fr-ex text-xs mt-1 block"
+                                            >assez de temps</span
+                                        >
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- 介词 -->
+                            <div
+                                class="bg-white rounded-xl shadow-sm border border-slate-200 p-6"
+                            >
+                                <h3
+                                    class="text-lg font-semibold text-slate-800 mb-4"
+                                >
+                                    <span class="fr-term">Prépositions</span>
+                                    介词网络
+                                </h3>
+                                <ul class="text-sm space-y-2">
+                                    <li>
+                                        <strong>à：</strong> 方位 (au sud de),
+                                        地点 (à Paris), 裸露/开放的交通方式 (à
+                                        pied, à vélo)。
+                                    </li>
+                                    <li>
+                                        <strong>en：</strong> 封闭的交通工具 (en
+                                        voiture, en train),
+                                        阴性/元音开头的国名/地点, 年份月份 (en
+                                        2012)。
+                                    </li>
+                                    <li>
+                                        <strong>dans：</strong> 内部方位,
+                                        未来从起算点的一段时间 (<span
+                                            class="fr-ex"
+                                            >dans trois mois</span
+                                        >)。
+                                    </li>
+                                    <li>
+                                        <strong>pour：</strong> 延续时间, 对象,
+                                        目的。
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- 连词 -->
+                            <div
+                                class="bg-white rounded-xl shadow-sm border border-slate-200 p-6"
+                            >
+                                <h3
+                                    class="text-lg font-semibold text-slate-800 mb-4"
+                                >
+                                    <span class="fr-term">Conjonctions</span>
+                                    逻辑连词
+                                </h3>
+                                <ul class="text-sm space-y-3">
+                                    <li>
+                                        <strong>Si (条件/假设)：</strong>
+                                        从句直陈现在时，主句可现在、将来或命令。<br />
+                                        <span class="fr-ex text-xs block"
+                                            >Si tu es pressé, prends un
+                                            taxi.</span
+                                        >
+                                    </li>
+                                    <li>
+                                        <strong>Quand (时间/条件)：</strong>
+                                        当表将来条件时，主从句系统同步使用简单将来时。
+                                    </li>
+                                    <li>
+                                        <strong>Parce que：</strong>
+                                        引导直接原因从句 (回应对 Pourquoi
+                                        的提问)。
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- VIII. PONCTUATION 标点与符号 -->
+                    <section
+                        id="ponctuation"
+                        class="grammar-section scroll-mt-24"
+                    >
+                        <h2
+                            class="text-2xl font-bold text-slate-800 border-b-2 border-indigo-200 pb-2 mb-6 flex items-center"
+                        >
+                            <i
+                                class="fas fa-quote-right text-indigo-500 mr-3"
+                            ></i>
+                            VIII. Ponctuation (特殊字符、标点与缩略语)
+                        </h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div
+                                class="bg-white rounded-xl shadow-sm border border-slate-200 p-6"
+                            >
+                                <h3
+                                    class="text-lg font-semibold text-slate-800 mb-4"
+                                >
+                                    核心语音符号 (Les Accents)
+                                </h3>
+                                <div
+                                    class="grid grid-cols-2 gap-2 text-sm font-serif"
+                                >
+                                    <div
+                                        class="bg-slate-50 p-2 rounded flex justify-between"
+                                    >
+                                        <span>闭音符 (Aigu)</span>
+                                        <strong>é</strong>
+                                    </div>
+                                    <div
+                                        class="bg-slate-50 p-2 rounded flex justify-between"
+                                    >
+                                        <span>开音符 (Grave)</span>
+                                        <strong>è, à, ù</strong>
+                                    </div>
+                                    <div
+                                        class="bg-slate-50 p-2 rounded flex justify-between"
+                                    >
+                                        <span>长音符 (Circonflexe)</span>
+                                        <strong>â, ê, î, ô, û</strong>
+                                    </div>
+                                    <div
+                                        class="bg-slate-50 p-2 rounded flex justify-between"
+                                    >
+                                        <span>分音符 (Tréma)</span>
+                                        <strong>ë, ï, ü</strong>
+                                    </div>
+                                    <div
+                                        class="bg-slate-50 p-2 rounded flex justify-between"
+                                    >
+                                        <span>软音符 (Cédille)</span>
+                                        <strong>ç</strong> (发[s])
+                                    </div>
+                                    <div
+                                        class="bg-slate-50 p-2 rounded flex justify-between"
+                                    >
+                                        <span>省音符 (Apostrophe)</span>
+                                        <strong>'</strong> (l'ami)
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div
+                                class="bg-white rounded-xl shadow-sm border border-slate-200 p-6"
+                            >
+                                <h3
+                                    class="text-lg font-semibold text-slate-800 mb-4"
+                                >
+                                    高频学术缩略语映射表
+                                </h3>
+                                <div
+                                    class="grid grid-cols-2 gap-x-4 gap-y-1 text-xs font-mono text-slate-600"
+                                >
+                                    <div>adj. = adjectif (形容词)</div>
+                                    <div>adv. = adverbe (副词)</div>
+                                    <div>art. = article (冠词)</div>
+                                    <div>conj. = conjonction (连词)</div>
+                                    <div>inf. = infinitif (不定式)</div>
+                                    <div>n.m. = nom masculin (阳名)</div>
+                                    <div>n.f. = nom féminin (阴名)</div>
+                                    <div>prép. = préposition (介词)</div>
+                                    <div>pron. = pronom (代词)</div>
+                                    <div>
+                                        v.t. / v.i. / v.pr.
+                                        (及物/不及物/代词式动词)
+                                    </div>
+                                    <div>qch. = quelque chose (某物)</div>
+                                    <div>qn = quelqu'un (某人)</div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- 页脚声明 -->
+                <footer class="mt-12 mb-8 text-center text-xs text-slate-400">
+                    <p>
+                        Système de Mémento Grammatical Généré - Structuralisme
+                        Syntaxique
+                    </p>
+                    <p>Source : 《你好！法语 1》附录 205-215页 规范化映射</p>
+                </footer>
+            </div>
+        </main>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                // 1. 目录高亮追踪 (Intersection Observer)
+                const sections = document.querySelectorAll(".grammar-section");
+                const navLinks = document.querySelectorAll(".toc-link");
+
+                const observerOptions = {
+                    root: document.getElementById("scrollContainer"),
+                    rootMargin: "-20% 0px -70% 0px", // 触发线在视口偏上位置
+                    threshold: 0,
+                };
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            const id = entry.target.getAttribute("id");
+                            navLinks.forEach((link) => {
+                                link.classList.remove("active");
+                                if (link.getAttribute("href") === `#${id}`) {
+                                    link.classList.add("active");
+                                }
+                            });
+                        }
+                    });
+                }, observerOptions);
+
+                sections.forEach((section) => observer.observe(section));
+
+                // 2. 简易全局搜索过滤逻辑
+                const searchInput = document.getElementById("searchInput");
+                const clearBtn = document.getElementById("clearSearch");
+                const contentArea = document.getElementById("contentArea");
+                // 保存原始HTML以便恢复
+                const originalHTML = contentArea.innerHTML;
+
+                function escapeRegExp(string) {
+                    return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+                }
+
+                function performSearch(query) {
+                    if (!query) {
+                        contentArea.innerHTML = originalHTML;
+                        clearBtn.classList.add("hidden");
+                        return;
+                    }
+
+                    clearBtn.classList.remove("hidden");
+
+                    // 恢复原始结构用于搜索
+                    contentArea.innerHTML = originalHTML;
+
+                    // 简单文本高亮逻辑：遍历所有文本节点并替换
+                    const regex = new RegExp(`(${escapeRegExp(query)})`, "gi");
+
+                    // 仅高亮文本，不破坏HTML标签
+                    const walkDOM = (node) => {
+                        if (node.nodeType === 3) {
+                            // Text node
+                            const text = node.nodeValue;
+                            if (regex.test(text)) {
+                                const span = document.createElement("span");
+                                span.innerHTML = text.replace(
+                                    regex,
+                                    '<mark class="search-highlight">$1</mark>',
+                                );
+                                node.parentNode.replaceChild(span, node);
+                            }
+                        } else if (
+                            node.nodeType === 1 &&
+                            node.nodeName !== "SCRIPT" &&
+                            node.nodeName !== "STYLE"
+                        ) {
+                            // 遍历子节点时使用 Array.from 防止 DOM 变更导致的死循环
+                            Array.from(node.childNodes).forEach(walkDOM);
+                        }
+                    };
+
+                    walkDOM(contentArea);
+
+                    // 自动滚动到第一个高亮处
+                    const firstMark = contentArea.querySelector("mark");
+                    if (firstMark) {
+                        firstMark.scrollIntoView({
+                            behavior: "smooth",
+                            block: "center",
+                        });
+                    }
+                }
+
+                // 防抖机制
+                let timeoutId;
+                searchInput.addEventListener("input", (e) => {
+                    clearTimeout(timeoutId);
+                    timeoutId = setTimeout(() => {
+                        performSearch(e.target.value.trim());
+                    }, 300);
+                });
+
+                clearBtn.addEventListener("click", () => {
+                    searchInput.value = "";
+                    performSearch("");
+                });
+
+                // 3. 平滑滚动监听重置
+                navLinks.forEach((link) => {
+                    link.addEventListener("click", function (e) {
+                        e.preventDefault();
+                        const targetId = this.getAttribute("href").substring(1);
+                        const targetEl = document.getElementById(targetId);
+                        const container =
+                            document.getElementById("scrollContainer");
+
+                        if (targetEl && container) {
+                            // 计算滚动位置
+                            const topPos =
+                                targetEl.offsetTop - container.offsetTop;
+                            container.scrollTo({
+                                top: topPos,
+                                behavior: "smooth",
+                            });
+                        }
+                    });
+                });
+            });
+        </script>
+    </body>
+</html>
